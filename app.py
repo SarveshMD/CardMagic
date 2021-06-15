@@ -10,8 +10,9 @@ shuffledCards = list()
 shuffledCards.extend(cards)
 random.shuffle(shuffledCards)
 shuffledCards1 = shuffledCards[:21]
-shuffledCards1 = ['Diamond 10', 'Heart A', 'Heart 5', 'Diamond 8', 'Diamond 5', 'Club 10', 'Spade 9', 'Heart Q', 'Spade A', 'Diamond 2', 'Spade J', 'Diamond J', 'Spade 6', 'Spade 7', 'Heart 9', 'Heart 6', 'Heart 8', 'Club 6', 'Club J', 'Club Q', 'Heart 7']
-print(shuffledCards1)
+for card in shuffledCards1:
+	print(card)
+
 print("\nChoose a card from the listed cards and write it down somewhere !")
 print("I am going to find what card you chose :)")
 print("\n")
@@ -49,6 +50,7 @@ while True:
 		if n>1:
 			print("Invalid deck number ! (re-enter deck number)")
 		else:
+			print()
 			print("Which deck the card you chose is ?\n(Enter the deck number)")
 		deckNo = input()
 		if deckNo == "1" or deckNo == "2" or deckNo == "3":
@@ -110,6 +112,7 @@ while True:
 		if n>1:
 			print("Invalid deck number !")
 		else:
+			print()
 			print("Which deck the card you chose is ?\n(Enter the deck number)")
 		deckNo = input()
 		if deckNo == "1" or deckNo == "2" or deckNo == "3":
@@ -171,6 +174,7 @@ while True:
 		if n>1:
 			print("Invalid deck number !")
 		else:
+			print()
 			print("Which deck the card you chose is ?\n(Enter the deck number)")
 		deckNo = input()
 		if deckNo == "1" or deckNo == "2" or deckNo == "3":
@@ -220,4 +224,5 @@ if deckNo == 3:
 	shuffledCards4.extend(split3Deck1)
 
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print("The card you chose is :")
 print(shuffledCards4[10])
