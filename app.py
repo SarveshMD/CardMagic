@@ -1,4 +1,6 @@
 import random
+import time
+
 sets = ['Heart', 'Diamond', 'Spade', 'Club']
 numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 cards = []
@@ -16,7 +18,7 @@ for card in shuffledCards1:
 print("\nChoose a card from the listed cards and write it down somewhere !")
 print("I am going to find what card you chose :)")
 print("\n")
-
+time.sleep(10)
 
 def splitIntoThree(deck):
 	num = 0
