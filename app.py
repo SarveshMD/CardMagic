@@ -1,6 +1,5 @@
-# Importing required modules #
+# Importing required module #
 import random
-import time
 
 # Setting it up #
 sets = ['Heart', 'Diamond', 'Spade', 'Club']
