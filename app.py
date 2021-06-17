@@ -1,6 +1,8 @@
+# Importing required modules #
 import random
 import time
 
+# Setting it up #
 sets = ['Heart', 'Diamond', 'Spade', 'Club']
 numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 cards = []
@@ -17,8 +19,28 @@ for card in shuffledCards1:
 
 print("\nChoose a card from the listed cards and write it down somewhere !")
 print("I am going to find what card you chose :)")
+print("Hit enter when you're ready !")
+input()
 print("\n")
-time.sleep(10)
+
+# Defining required class #
+# =============================================================== #
+
+class color:
+	PURPLE = '\033[95m'
+	CYAN = '\033[96m'
+	DARKCYAN = '\033[36m'
+	BLUE = '\033[94m'
+	GREEN = '\033[92m'
+	YELLOW = '\033[93m'
+	RED = '\033[91m'
+	BOLD = '\033[1m'
+	UNDERLINE = '\033[4m'
+	END = '\033[0m'
+# =============================================================== #
+
+# Defining required functions #
+# =============================================================== #
 
 def splitIntoThree(deck):
 	num = 0
@@ -38,193 +60,130 @@ def splitIntoThree(deck):
 			deck1.append(card)
 	print("  Deck 1     |   Deck 2      |    Deck 3 ")
 	for card1, card2, card3 in zip(deck1, deck2, deck3):
-		print(card1, " "*(15-len(card1)), card2, " "*(15-len(card2)), card3)
+		print(card1, " "* (15-len(card1)), card2, " " *(15-len(card2)), card3)
 	return deck1, deck2, deck3
+# =============================================================== #
+
+def whereIs(splitNDeck1, splitNDeck2, splitNDeck3):
+	n = 1
+	while True:
+		while True:
+			if n>1:
+				print("Invalid deck number ! (re-enter deck number)")
+			else:
+				print()
+				print("Which deck the card you chose is ?\n(Enter the deck number)")
+			deckNo = input()
+			if deckNo == "1" or deckNo == "2" or deckNo == "3":
+				deckNo = int(deckNo)
+				break
+			else:
+				n += 1
+				continue
+		print()
+		print("Are you sure that the card you chose is in this deck ?")
+
+		if deckNo == 1:
+			for card in splitNDeck1:
+				print(card)
+		elif deckNo == 2:
+			for card in splitNDeck2:
+				print(card)
+		elif deckNo == 3:
+			for card in splitNDeck3:
+				print(card)
+
+		while True:
+			print()
+			confirm = input("(y/n)\n")
+			print()
+			if confirm.lower() == "y" or confirm.lower() == "n":
+				break
+			else:
+				continue
+		if confirm.lower() == "n":
+			continue
+		else:
+			break
+	return deckNo
+# =============================================================== #
+
+def orderDecks(shuffledCardsN, splitNDeck1, splitNDeck2, splitNDeck3, deckNo):
+	if deckNo == 1:
+		shuffledCardsN.extend(splitNDeck2)
+		shuffledCardsN.extend(splitNDeck1)
+		shuffledCardsN.extend(splitNDeck3)
+	if deckNo == 2:
+		shuffledCardsN.extend(splitNDeck1)
+		shuffledCardsN.extend(splitNDeck2)
+		shuffledCardsN.extend(splitNDeck3)
+	if deckNo == 3:
+		shuffledCardsN.extend(splitNDeck2)
+		shuffledCardsN.extend(splitNDeck3)
+		shuffledCardsN.extend(splitNDeck1)
+
+	return shuffledCardsN
+
+# =============================================================== #
 
 split1 = splitIntoThree(shuffledCards1)
 split1Deck1 = split1[0]
 split1Deck2 = split1[1]
 split1Deck3 = split1[2]
 
-n = 1
-while True:
-	while True:
-		if n>1:
-			print("Invalid deck number ! (re-enter deck number)")
-		else:
-			print()
-			print("Which deck the card you chose is ?\n(Enter the deck number)")
-		deckNo = input()
-		if deckNo == "1" or deckNo == "2" or deckNo == "3":
-			deckNo = int(deckNo)
-			break
-		else:
-			n += 1
-			continue
-	print()
-	print("Are you sure that the card you chose is in this deck ?")
-
-	if deckNo == 1:
-		for card in split1Deck1:
-			print(card)
-	elif deckNo == 2:
-		for card in split1Deck2:
-			print(card)
-	elif deckNo == 3:
-		for card in split1Deck3:
-			print(card)
-
-	while True:
-		print()
-		confirm = input("(y/n)\n")
-		if confirm.lower() == "y" or confirm.lower() == "n":
-			break
-		else:
-			continue
-	if confirm.lower() == "n":
-		continue
-	else:
-		break
+deckNo = whereIs(split1Deck1, split1Deck2, split1Deck3)
 
 shuffledCards2 = list()
+shuffledCards2 = orderDecks(shuffledCards2, split1Deck1, split1Deck2, split1Deck3, deckNo)
 
-if deckNo == 1:
-	shuffledCards2.extend(split1Deck2)
-	shuffledCards2.extend(split1Deck1)
-	shuffledCards2.extend(split1Deck3)
-if deckNo == 2:
-	shuffledCards2.extend(split1Deck1)
-	shuffledCards2.extend(split1Deck2)
-	shuffledCards2.extend(split1Deck3)
-if deckNo == 3:
-	shuffledCards2.extend(split1Deck2)
-	shuffledCards2.extend(split1Deck3)
-	shuffledCards2.extend(split1Deck1)
-
-#######################################################################################
+# -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 split2 = splitIntoThree(shuffledCards2)
 split2Deck1 = split2[0]
 split2Deck2 = split2[1]
 split2Deck3 = split2[2]
 
-n = 1
-while True:
-	while True:
-		if n>1:
-			print("Invalid deck number !")
-		else:
-			print()
-			print("Which deck the card you chose is ?\n(Enter the deck number)")
-		deckNo = input()
-		if deckNo == "1" or deckNo == "2" or deckNo == "3":
-			deckNo = int(deckNo)
-			break
-		else:
-			continue
-	print()
-	print("Are you sure that the card you chose is in this deck ?")
-
-	if deckNo == 1:
-		for card in split2Deck1:
-			print(card)
-	elif deckNo == 2:
-		for card in split2Deck2:
-			print(card)
-	elif deckNo == 3:
-		for card in split2Deck3:
-			print(card)
-
-	while True:
-		print()
-		confirm = input("(y/n)\n")
-		if confirm.lower() == "y" or confirm.lower() == "n":
-			break
-		else:
-			continue
-	if confirm.lower() == "n":
-		n += 1
-		continue
-	else:
-		break
+deckNo = whereIs(split2Deck1, split2Deck2, split2Deck3)
 
 shuffledCards3 = list()
+shuffledCards3 = orderDecks(shuffledCards3, split2Deck1, split2Deck2, split2Deck3, deckNo)
 
-if deckNo == 1:
-	shuffledCards3.extend(split2Deck2)
-	shuffledCards3.extend(split2Deck1)
-	shuffledCards3.extend(split2Deck3)
-if deckNo == 2:
-	shuffledCards3.extend(split2Deck1)
-	shuffledCards3.extend(split2Deck2)
-	shuffledCards3.extend(split2Deck3)
-if deckNo == 3:
-	shuffledCards3.extend(split2Deck2)
-	shuffledCards3.extend(split2Deck3)
-	shuffledCards3.extend(split2Deck1)
 
-#######################################################################################
+# -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 split3 = splitIntoThree(shuffledCards3)
 split3Deck1 = split3[0]
 split3Deck2 = split3[1]
 split3Deck3 = split3[2]
 
-n = 1
-while True:
-	while True:
-		if n>1:
-			print("Invalid deck number !")
-		else:
-			print()
-			print("Which deck the card you chose is ?\n(Enter the deck number)")
-		deckNo = input()
-		if deckNo == "1" or deckNo == "2" or deckNo == "3":
-			deckNo = int(deckNo)
-			break
-		else:
-			continue
-	print()
-	print("Are you sure that the card you chose is in this deck ?")
-
-	if deckNo == 1:
-		for card in split3Deck1:
-			print(card)
-	elif deckNo == 2:
-		for card in split3Deck2:
-			print(card)
-	elif deckNo == 3:
-		for card in split3Deck3:
-			print(card)
-
-	while True:
-		print()
-		confirm = input("(y/n)\n")
-		if confirm.lower() == "y" or confirm.lower() == "n":
-			break
-		else:
-			continue
-	if confirm.lower() == "n":
-		n += 1
-		continue
-	else:
-		break
+deckNo = whereIs(split3Deck1, split3Deck2, split3Deck3)
 
 shuffledCards4 = list()
+shuffledCards4 = orderDecks(shuffledCards4, split3Deck1, split3Deck2, split3Deck3, deckNo)
 
-if deckNo == 1:
-	shuffledCards4.extend(split3Deck2)
-	shuffledCards4.extend(split3Deck1)
-	shuffledCards4.extend(split3Deck3)
-if deckNo == 2:
-	shuffledCards4.extend(split3Deck1)
-	shuffledCards4.extend(split3Deck2)
-	shuffledCards4.extend(split3Deck3)
-if deckNo == 3:
-	shuffledCards4.extend(split3Deck2)
-	shuffledCards4.extend(split3Deck3)
-	shuffledCards4.extend(split3Deck1)
+# -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-print("The card you chose is :")
-print(shuffledCards4[10])
+print("The card you chose is :\n")
+
+print(color.RED + f'''
+        00000000000           000000000000
+      00000000     00000   000000     0000000
+    0000000             000              00000
+   0000000               0                 0000
+  000000                                    0000
+  00000                                      0000
+ 00000                                      00000
+ 00000{((37-len(shuffledCards4[10]))//2)*" "}{color.END}{color.CYAN}{shuffledCards4[10]}{color.END}{color.RED}{((37-len(shuffledCards4[10]))//2)*" "}000000
+  000000                                 0000000
+   0000000                              0000000
+     000000                            000000
+       000000                        000000
+          00000                     0000
+             0000                 0000
+               0000             000
+                 000         000
+                    000     00
+                      00  00
+                        00
+''' + color.END)
