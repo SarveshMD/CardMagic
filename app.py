@@ -125,6 +125,7 @@ def orderDecks(shuffledCardsN, splitNDeck1, splitNDeck2, splitNDeck3, deckNo):
 
 # =============================================================== #
 
+print("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-  Round 1  -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n")
 split1 = splitIntoThree(shuffledCards1)
 split1Deck1 = split1[0]
 split1Deck2 = split1[1]
@@ -135,8 +136,9 @@ deckNo = whereIs(split1Deck1, split1Deck2, split1Deck3)
 shuffledCards2 = list()
 shuffledCards2 = orderDecks(shuffledCards2, split1Deck1, split1Deck2, split1Deck3, deckNo)
 
-# -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+# -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
+print("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-  Round 2  -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n")
 split2 = splitIntoThree(shuffledCards2)
 split2Deck1 = split2[0]
 split2Deck2 = split2[1]
@@ -150,6 +152,7 @@ shuffledCards3 = orderDecks(shuffledCards3, split2Deck1, split2Deck2, split2Deck
 
 # -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
+print("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-  Round 3  -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n")
 split3 = splitIntoThree(shuffledCards3)
 split3Deck1 = split3[0]
 split3Deck2 = split3[1]
