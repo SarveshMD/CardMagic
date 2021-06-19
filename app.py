@@ -1,5 +1,6 @@
 # Importing required module #
 import random
+import time
 
 # Defining required class #
 # =============================================================== #
@@ -169,24 +170,30 @@ shuffledCards4 = orderDecks(shuffledCards4, split3Deck1, split3Deck2, split3Deck
 print(color.YELLOW + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print(color.BLUE + "The card you chose is :\n")
 
-print(color.RED + f'''
-        00000000000           000000000000
-      00000000     00000   000000     0000000
-    0000000             000              00000
-   0000000               0                 0000
-  000000                                    0000
-  00000                                      0000
- 00000                                      00000
- 00000{((37-len(shuffledCards4[10]))//2)*" "}{color.CYAN}{shuffledCards4[10]}{color.END}{color.RED}{((37-len(shuffledCards4[10]))//2)*" "}000000
-  000000                                 0000000
-   0000000                              0000000
-     000000                            000000
-       000000                        000000
-          00000                     0000
-             0000                 0000
-               0000             000
-                 000         000
-                    000     00
-                      00  00
-                        00
-''' + color.END)
+heart = [
+	color.RED,
+	'        00000000000           000000000000',
+	'      00000000     00000   000000     0000000',
+	'    0000000             000              00000',
+	'   0000000               0                 0000',
+	'  000000                                    0000',
+	'  00000                                      0000',
+	' 00000                                      00000',
+	f' 00000{((37-len(shuffledCards4[10]))//2)*" "}{color.CYAN}{shuffledCards4[10]}{color.END}{color.RED}{((37-len(shuffledCards4[10]))//2)*" "}000000',
+	'  000000                                 0000000',
+	'   0000000                              0000000',
+	'     000000                            000000',
+	'       000000                        000000',
+	'          00000                     0000',
+	'             0000                 0000',
+	'               0000             000',
+	'                 000         000',
+	'                    000     00',
+	'                      00  00',
+	'                        00',
+	'\n'
+	]
+
+for line in heart:
+	time.sleep(0.02)
+	print(line)
