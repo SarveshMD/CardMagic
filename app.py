@@ -1,4 +1,4 @@
-# Importing required module #
+# Importing required modules #
 import random
 import time
 
@@ -33,11 +33,12 @@ shuffledCards1 = shuffledCards[:21]
 for card in shuffledCards1:
 	print(color.BLUE + card + color.END)
 
-print(color.CYAN + "\nChoose a card from the listed cards and write it down somewhere !")
+print(color.CYAN + "\nChoose a card from the listed cards and remember it or write it down somewhere !")
 print("I am going to find what card you chose :)")
 print("Hit enter when you're ready !" + color.END)
 input()
 print("\n")
+random.shuffle(shuffledCards1)
 
 
 # Defining required functions #
@@ -191,7 +192,7 @@ heart = [
 	'                    000     00',
 	'                      00  00',
 	'                        00',
-	'\n'
+	f'{color.END}\n'
 	]
 
 for line in heart:
